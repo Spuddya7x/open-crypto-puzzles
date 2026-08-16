@@ -28,6 +28,13 @@
       "label": "main",
       "explorer": "https://etherscan.io/address/0xb5fe4f1b6cb2bbe6a327f8c68f370da7df18b2dc",
       "expected": "305.930218 USDT",
+      "token": {
+        "standard": "erc20",
+        "contract": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+        "decimals": 6,
+        "symbol": "USDT",
+        "contract_explorer": "https://etherscan.io/token/0xdAC17F958D2ee523a2206206994597C13D831ec7"
+      },
       "verified_on": "2026-08-16",
       "verified_state": "funded-unspent"
     }

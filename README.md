@@ -16,7 +16,7 @@ on-chain right now.
 | Bitcoin | 9.80 BTC | $617,000 |
 | Ethereum | 12.21 ETH | $23,000 |
 | Arweave | 1,900 AR | $3,400 |
-| Stablecoins | 306 USDT + 166 USDC | $500 |
+| Stablecoins | 306 USDT + 168 USDC | $500 |
 | **Total** | **across 33 funded puzzles** | **$644,000** |
 
 Checked 2026-08-16 at BTC $63,000, ETH $1,880, AR $1.81. Prices and balances move; verify each escrow yourself.
@@ -97,7 +97,7 @@ grouped by prize, is in the tables below.
 | [VeteranHODL: Hunting Time](2-mid-prizes/veteranhodl-hunting-time-420ksats/) | 420,000 sats | 265 | bitcoin | bip39-seed, book, word-selection | bounded-compute | 2026-08-16 | open |
 | [Keysa: Crack the Seed Game](2-mid-prizes/keysa-crack-the-seed-369ksats/) | 369,369 sats | 233 | bitcoin | bip39-seed, word-selection | insight | 2026-08-16 | open |
 | [Zden Level HALV](2-mid-prizes/zden-haluska-halv-312ksats/) | 312,500 sats | 197 | bitcoin | geometry, raw-private-key | external-info | 2026-08-16 | open |
-| [FTPK Season 4: Something in Common](2-mid-prizes/ftpk-season-4-166usdc/) | 166 USDC | 166 | ethereum | bip39-seed, word-selection | insight | 2026-08-16 | open |
+| [FTPK Season 4: Something in Common](2-mid-prizes/ftpk-season-4-166usdc/) | 168 USDC | 168 | ethereum | bip39-seed, word-selection | insight | 2026-08-16 | open |
 | [Pindar Van Arman: cryptoArtGAN Act 1 Puzzle](2-mid-prizes/pindar-van-arman-cryptoartgan-nft/) | 1 NFT |  | ethereum | bip39-seed, word-selection | insight | 2026-08-16 | open |
 
 ## Small prizes (< $100)

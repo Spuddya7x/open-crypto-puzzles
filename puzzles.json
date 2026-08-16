@@ -1887,6 +1887,13 @@
           "label": "main",
           "explorer": "https://etherscan.io/address/0xb5fe4f1b6cb2bbe6a327f8c68f370da7df18b2dc",
           "expected": "305.930218 USDT",
+          "token": {
+            "standard": "erc20",
+            "contract": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+            "decimals": 6,
+            "symbol": "USDT",
+            "contract_explorer": "https://etherscan.io/token/0xdAC17F958D2ee523a2206206994597C13D831ec7"
+          },
           "verified_on": "2026-08-16",
           "verified_state": "funded-unspent"
         }
@@ -1977,11 +1984,11 @@
       },
       "chain": "ethereum",
       "prize": {
-        "amount": 166.0,
+        "amount": 168.0,
         "asset": "USDC",
-        "usd_estimate": 166,
+        "usd_estimate": 168,
         "usd_snapshot": "2026-08-16",
-        "note": "the author tops up this prize over time; it started at 150 USDC and has grown since, plus a small native ETH gas preload for the eventual winner"
+        "note": "the author tops up this prize over time; it started at 153 USDC and has grown one dollar at a time, plus a small native ETH gas preload for the eventual winner"
       },
       "addresses": [
         {
@@ -1990,7 +1997,14 @@
           "role": "escrow",
           "label": "main",
           "explorer": "https://etherscan.io/address/0xa468335485cE853F21A44451755bd88364e9d618",
-          "expected": "166.000000 USDC",
+          "expected": "168.000000 USDC",
+          "token": {
+            "standard": "erc20",
+            "contract": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+            "decimals": 6,
+            "symbol": "USDC",
+            "contract_explorer": "https://etherscan.io/token/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48"
+          },
           "verified_on": "2026-08-16",
           "verified_state": "funded-unspent"
         }
@@ -2641,6 +2655,12 @@
           "label": "main",
           "explorer": "https://etherscan.io/address/0x18f87ec9c527aba1db44f715456bf28b0dae478d",
           "expected": "1 NFT (Magic Internet moneyGAN, 445/512)",
+          "token": {
+            "standard": "erc1155",
+            "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e",
+            "token_id": "38543999587180483086453667688708911953853707150137941511194370325563503017985",
+            "contract_explorer": "https://etherscan.io/token/0x495f947276749Ce646f68AC8c248420045cb7b5e"
+          },
           "verified_on": "2026-08-16",
           "verified_state": "funded-unspent"
         }

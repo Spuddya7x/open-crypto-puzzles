@@ -44,12 +44,34 @@ curl -s -X POST https://eth.drpc.org \
 Or open `https://etherscan.io/address/<address>` (Ethereum) or
 `https://basescan.org/address/<address>` (Base).
 
+When the prize is a token rather than native ETH, the balance lives in the token contract
+and has to be read from there. `balanceOf(address)` is selector `70a08231` followed by the
+address left-padded to 32 bytes:
+
+```bash
+curl -s -X POST https://ethereum-rpc.publicnode.com \
+  -H "Content-Type: application/json" \
+  -d '{"jsonrpc":"2.0","method":"eth_call","id":1,"params":[{
+        "to":"0xdAC17F958D2ee523a2206206994597C13D831ec7",
+        "data":"0x70a08231000000000000000000000000<address without 0x>"},"latest"]}'
+```
+
+USDT and USDC both carry 6 decimals, so divide the returned integer by 1,000,000. For an
+ERC-1155 piece use `balanceOf(address,uint256)`, selector `00fdd58e`, with the token id
+appended as a second 32-byte word; for an ERC-721 use `ownerOf(uint256)`, selector
+`6352211e`, and compare the returned address to the escrow.
+
 Traps:
 - If the escrow is a smart contract, its ETH balance is not the whole story: check whether
   the contract actually has a function that pays out to a solver, or whether the funds are
   stuck with no exit path regardless of who solves the riddle.
 - Some prizes are ERC-20 tokens (USDT, USDC), not native ETH. A zero ETH balance on an
   address holding USDT is not "unfunded"; check the token balance, not the account balance.
+  The same goes for an NFT prize: the escrow's native balance says nothing about whether it
+  still holds the piece.
+- Free RPC endpoints differ in what they will serve. Some answer `eth_getBalance` but refuse
+  `eth_call`, which is the one the token reads need, so a token check can fail on an endpoint
+  that looks healthy for plain balances.
 
 ## Arweave
 
@@ -94,3 +116,18 @@ The script prints one row per address: slug, label, address, expected amount, ob
 state, and a verdict. It never reports a network error as a sweep; a failed request is
 printed as `ERROR`, not as `swept` or `unfunded`, because those two look identical to a
 naive check and only one of them means the prize is gone.
+
+Token-backed escrows are read from the contract that holds the prize, which the manifest
+names in the address entry:
+
+```json
+"token": {"standard": "erc20", "contract": "0xdAC17F95...", "decimals": 6, "symbol": "USDT"}
+"token": {"standard": "erc1155", "contract": "0x495f9472...", "token_id": "38543999..."}
+```
+
+Without that block the script falls back to the native balance, which for a USDT or NFT
+escrow is legitimately zero, and reports a sweep that never happened. One limit is worth
+knowing: a token balance of zero cannot be told apart from an address that never held the
+token without reading log history, so a zero reads as "unfunded" and the detail line says
+`token_balance=0`. An address with contract code that still holds a balance is reported as
+`contract-holds-funds` rather than `funded-unspent`.

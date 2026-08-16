@@ -231,6 +231,44 @@
           "expected": {
             "type": "string"
           },
+          "token": {
+            "type": "object",
+            "description": "Present when the prize is a token rather than the chain's native coin: the contract that actually holds it. Without this the escrow reads as unfunded, since its native balance is legitimately zero.",
+            "additionalProperties": false,
+            "required": [
+              "standard",
+              "contract"
+            ],
+            "properties": {
+              "standard": {
+                "type": "string",
+                "enum": [
+                  "erc20",
+                  "erc721",
+                  "erc1155"
+                ]
+              },
+              "contract": {
+                "type": "string",
+                "pattern": "^0x[a-fA-F0-9]{40}$"
+              },
+              "token_id": {
+                "type": "string",
+                "description": "Required for erc721 and erc1155. A decimal string, because these ids overflow a JSON number."
+              },
+              "decimals": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 36
+              },
+              "symbol": {
+                "type": "string"
+              },
+              "contract_explorer": {
+                "type": "string"
+              }
+            }
+          },
           "verified_on": {
             "type": "string",
             "pattern": "^\\d{4}-\\d{2}-\\d{2}$"

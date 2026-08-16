@@ -28,6 +28,12 @@
       "label": "main",
       "explorer": "https://etherscan.io/address/0x18f87ec9c527aba1db44f715456bf28b0dae478d",
       "expected": "1 NFT (Magic Internet moneyGAN, 445/512)",
+      "token": {
+        "standard": "erc1155",
+        "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e",
+        "token_id": "38543999587180483086453667688708911953853707150137941511194370325563503017985",
+        "contract_explorer": "https://etherscan.io/token/0x495f947276749Ce646f68AC8c248420045cb7b5e"
+      },
       "verified_on": "2026-08-16",
       "verified_state": "funded-unspent"
     }

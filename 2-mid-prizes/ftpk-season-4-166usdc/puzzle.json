@@ -14,11 +14,11 @@
   "published": { "date": "2026-07-16", "url": "https://x.com/FTPKgame/status/2077755138668671313" },
   "chain": "ethereum",
   "prize": {
-    "amount": 166.0,
+    "amount": 168.0,
     "asset": "USDC",
-    "usd_estimate": 166,
+    "usd_estimate": 168,
     "usd_snapshot": "2026-08-16",
-    "note": "the author tops up this prize over time; it started at 150 USDC and has grown since, plus a small native ETH gas preload for the eventual winner"
+    "note": "the author tops up this prize over time; it started at 153 USDC and has grown one dollar at a time, plus a small native ETH gas preload for the eventual winner"
   },
   "addresses": [
     {
@@ -27,7 +27,14 @@
       "role": "escrow",
       "label": "main",
       "explorer": "https://etherscan.io/address/0xa468335485cE853F21A44451755bd88364e9d618",
-      "expected": "166.000000 USDC",
+      "expected": "168.000000 USDC",
+      "token": {
+        "standard": "erc20",
+        "contract": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+        "decimals": 6,
+        "symbol": "USDC",
+        "contract_explorer": "https://etherscan.io/token/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48"
+      },
       "verified_on": "2026-08-16",
       "verified_state": "funded-unspent"
     }

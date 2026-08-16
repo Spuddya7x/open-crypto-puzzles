@@ -1,4 +1,4 @@
-# FTPK Season 4: Something in Common (166.000000 USDC, [OPEN])
+# FTPK Season 4: Something in Common (168.000000 USDC, [OPEN])
 
 FTPKgame (@FTPKgame on X), the same author behind the Season 2 puzzle in this repository,
 launched a fourth season on 2026-07-16: 12 independent mini-games, each worth one English
@@ -16,10 +16,10 @@ wordlist index.
 |---|---|
 | Author | FTPKgame, [@FTPKgame on X](https://x.com/FTPKgame) |
 | Published | 2026-07-16, X ([announcement](https://x.com/FTPKgame/status/2077755138668671313)) |
-| Prize | 166.000000 USDC (about $166, stablecoin, 2026-08-16) |
+| Prize | 168.000000 USDC (about $168, stablecoin, 2026-08-16) |
 | Chain | ethereum |
 | Escrow | `0xa468335485cE853F21A44451755bd88364e9d618` ([explorer](https://etherscan.io/address/0xa468335485cE853F21A44451755bd88364e9d618)) |
-| Last on-chain check | 2026-08-16: USDC balance 166.000000, native ETH 0.00053941261264344 (gas preload for the winner), 0 outgoing transactions ever |
+| Last on-chain check | 2026-08-16: USDC balance 168.000000, native ETH 0.00053941261264344 (gas preload for the winner), 0 outgoing transactions ever |
 | Status | OPEN |
 | Puzzle type | bip39-seed, word-selection |
 | Target format | 12 English BIP39 words, BIP44 `m/44'/60'/0'/0/0`, no passphrase |
@@ -79,20 +79,38 @@ specific to this season has been published by the author, unlike Season 2's Game
 
 ### Established facts
 
-1. The escrow holds 166.000000 USDC and a 0.00053941261264344 ETH gas preload, with 0
+1. The escrow holds 168.000000 USDC and a 0.00053941261264344 ETH gas preload, with 0
    outgoing transactions ever, checked via `eth_call` to the USDC contract and
    `eth_getTransactionCount` on 2026-08-16.
-2. The prize has grown since the season launched: recorded at 153.000000 USDC in earlier
-   research and at 166.000000 USDC on 2026-08-16, with the author confirming on X that a
-   solver's use of the paid word checker added an extra dollar to the pool.
+2. The prize grows one dollar at a time, and its deposit history is a public activity
+   meter on the rest of the field. The author funded it once, 153.000000 USDC on
+   2026-07-11, and every later deposit is exactly 1.000000 USDC: the price of one use of
+   the paid word checker, which pays into the prize. Fifteen such payments have landed,
+   the first on 2026-08-10 and the two most recent on 2026-08-16, from three distinct
+   wallets (10 payments, 4 payments, and 1). Someone else is working this season now, and
+   the deposit timestamps say when.
 3. The author confirmed all 12 words are drawn from the standard BIP39 English wordlist.
 4. The page-naming scheme, `md5(N).html` for a decimal integer `N`, is confirmed for all
-   12 games (every N is 2200 or less) but is not itself a mapping from N to the answer
-   word.
-5. Game 1, a hangman puzzle with the pattern `??o?` and corner tags reading "1st" and
-   "dance", establishes the word `frog` with confidence through the hangman mechanics
-   themselves, not through the page-naming integer.
-6. Game 10, a repeated phrase reading "again and again", is a strong candidate for the
+   12 games (every N is 2200 or less).
+5. The hidden page's name is 12 concatenated BIP39 words:
+   `service cricket gloom attend supreme jump annual eager pulp project disease round`.
+   All 12 are in the English wordlist, and in that order they form a mnemonic whose BIP39
+   checksum is valid, which only 1 ordering in 16 does.
+6. Game 1's page integer is 1570, and 1570 is the 1-based position of `service` in the
+   BIP39 English wordlist: the first word of the hidden page's name. Two facts established
+   separately, one by brute-forcing `md5(N)` against the game pages and one by reading the
+   hidden page's URL, land on the same word, which is a 1-in-2048 coincidence otherwise.
+   This is the strongest available reading of the author's "something in common" hint:
+   each game's page integer is the 1-based BIP39 index of that game's own answer word. It
+   costs me an earlier finding: I had read game 1's hangman as the 4-letter `frog`, and
+   `service` cannot fit a 4-letter pattern, so one of the two readings is wrong. The index
+   reading is the one with independent support, and `frog` is now a candidate I would drop
+   rather than defend.
+7. Under that reading the other 11 page integers are predicted exactly, and anyone with
+   site access can falsify this in a minute: game 2 is 412, then 796, 117, 1744, 968, 76,
+   552, 1388, 1377, 505, 1508 in the hidden page's word order. Every one is under 2200,
+   which is the bound the page sweep already measured.
+8. Game 10, a repeated phrase reading "again and again", is a strong candidate for the
    word `repeat`, pending confirmation alongside the other 11 words.
 
 ## What has been tested
