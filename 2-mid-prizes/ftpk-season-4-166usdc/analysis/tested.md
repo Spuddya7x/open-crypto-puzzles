@@ -18,6 +18,31 @@ candidate). Game 1's page-naming integer is 1570, which indexes to "service" or 
 in the BIP39 list depending on 0- or 1-based counting; neither word fits the `??o?`
 pattern. Refuted as a direct index scheme.
 
+**Reopened, 2026-08-16.** That refutation rests on the hangman reading, and the hangman
+reading is the weaker of the two. The hidden page's own name is
+`servicecricketgloomattendsupremejumpannualeagerpulpprojectdiseaseround`, and its first
+word is `service`, the word at 1-based BIP39 position 1570, which is exactly game 1's page
+integer. The two facts were established by different routes, one by brute-forcing `md5(N)`
+against the game pages and one by reading the hidden page's URL, so their agreement on one
+word out of 2048 is not a coincidence I can wave away. The direct index scheme is back on
+the table and `frog` is the reading I would now drop.
+
+## The hidden page's name, read as the word set
+
+The name splits into BIP39 words in exactly one way. Enumerating every split of the
+69-character string into dictionary words (3 to 8 characters each, all 2048 words allowed)
+returns a single segmentation, the 12 words above: there is no competing reading of the
+concatenation. Checked 2026-08-16.
+
+Those 12 words, in the order the URL gives them, pass the BIP39 checksum, which only 1
+ordering in 16 does. As a mnemonic in that order they derive
+`0x97486102c2019ca03389024d1990a241004e8493` at `m/44'/60'/0'/0/0`, which is neither this
+season's escrow nor Season 2's. Extending to 27 standard paths (`m/44'/60'/0'/0/0` through
+`/5`, `m/44'/60'/i'/0/0` for i of 0 to 5, the Ledger legacy layout `m/44'/60'/0'/0`, and
+BIP44/BIP49/BIP84 Bitcoin at address indexes 0 to 4) and comparing against all 78 addresses
+in this repository gives 0 matches. The word set in game order is therefore not the
+mnemonic; if the set is right, the mnemonic is a different ordering of it.
+
 ## Grid puzzles
 
 Games 4 (8x8, corner tag "fall"), 6 (15x15), and 9 (11x11, corner tag "5:30") were
