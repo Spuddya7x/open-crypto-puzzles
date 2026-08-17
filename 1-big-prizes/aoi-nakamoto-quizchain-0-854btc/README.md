@@ -243,6 +243,7 @@ Full ledger in [analysis/tested.md](analysis/tested.md). Summary:
 | RBB: every first-letter selector for the case-flip rule on the whole chapter, 2^22, both CR LF conventions | 8,388,608 derivations | same | 0 match, complete sweep of its space | yes: planted in-space selector recovered | 2026-08-17 |
 | RBB: every contiguous range of all 33 chapters, repeated under bare-newline separators | 7,490,096 texts at 3 address indexes | same | 0 match, complete sweep of its space | yes: 33 planted witnesses, all recovered | 2026-08-17 |
 | RBB: the author's own quotation-mark device, all 33 chapters, 6 quoting conventions | 28,512 texts at 4 address indexes | same | 0 match | yes | 2026-08-17 |
+| RBB: every subset of the chapter's 17 planted paragraphs, marked, 3 modes, 4 separators | 6,291,456 texts at 3 address indexes | same | 0 match, complete sweep of its space | yes: planted in-space subset recovered | 2026-08-17 |
 
 Cumulative: approximately 272 million candidates tested against Real Big Block
 and approximately 78 million derivations plus approximately 78,000 smaller

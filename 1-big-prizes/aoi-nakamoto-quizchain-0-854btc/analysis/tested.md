@@ -92,6 +92,19 @@ Re-run so far under the stated bytes: all 33 chapters whole-text, 4 paragraph fo
 states, 4 leading offsets, 4 separators and 4 trailing choices, 16,896 texts at 4 address
 indexes, 0 match, witness recovered.
 
+### Every subset of the chapter's 17 planted paragraphs, marked, exhaustive, 2026-08-17
+
+Marking by first letter is closed, and marking whole groups was closed earlier, but marking
+an arbitrary subset of the 17 planted paragraphs was not, and that is the shape the author's
+own explanation actually describes: she picks out individual paragraphs, not a letter class
+and not a run. The 17 are the chapter's 3 self-planted F/F/W/W groups (paragraphs 5-8, 93-96,
+168-171) and its quotation of the Finney block (231-235).
+
+Every one of the 2^17 subsets, in 3 marking modes, 2 paragraph forms, 4 separators and both
+trailing choices: 6,291,456 candidate texts in 50.9 minutes on 4 cores, each derived at 3
+address indexes. **0 match**, witness recovered (the all-17 subset in "both" mode, planted
+inside the space).
+
 ### The author's own quotation-mark device, 2026-08-17
 
 In "Quizchain as a Password Manager" she describes wrapping the hashed string in quotation
