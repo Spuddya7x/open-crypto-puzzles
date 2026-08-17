@@ -113,3 +113,27 @@ that each keeper contributes a BIP39 word found literally in its title. What is 
 that reading itself. Panel 34's identification is still disputed, and several panels carry
 2 to 4 candidate words where the sweep tried all of them, so a negative here argues against
 the rating rule rather than against any particular word.
+
+## Every intruder set consistent with the title-to-word rule, 2026-08-17
+
+Rather than guess which IMDb field marks the intruders, this run brute-forces the intruder
+*set* under the constraint the mechanism itself imposes: if every keeper contributes a BIP39
+word found literally in its title, then the four identified titles that contain none (panels
+8, 25, 26, 32) are intruders, and so is panel 11 while it is unidentified. That fixes 5 of
+the 10 and leaves C(29,5) = 118,755 ways to pick the rest.
+
+Each keeper set was read in panel order, every candidate word each title offers tried, panel
+34 read as `ring`: 118,755 intruder sets, 271,127 checksum-valid 24-word candidates, derived
+at BIP84 `m/84'/0'/0'/0/i` for i in 0 to 2, 14.1 minutes. 0 matches.
+
+Certification: the harness reproduces the folder oracle's own address for the public 24-word
+vector exactly, and the checksum filter accepts that vector. No witness was planted inside
+the candidate stream itself, so by this repository's house rule this is a well-instrumented
+negative rather than a formally witnessed one.
+
+What it closes: no choice of 10 intruders solves this puzzle *while* every keeper's word is
+a literal BIP39 substring of its title, panel 34 is `ring`, and the derivation is BIP84 at
+account 0, indexes 0 to 2. The intruder rule is therefore not the only thing missing. The
+title-to-word rule is now the prime suspect: 4 of 33 identified titles carry no BIP39 word,
+which the author's own "transform 'somehow' each movie title" wording does not require to be
+a substring at all.
