@@ -92,6 +92,25 @@ Re-run so far under the stated bytes: all 33 chapters whole-text, 4 paragraph fo
 states, 4 leading offsets, 4 separators and 4 trailing choices, 16,896 texts at 4 address
 indexes, 0 match, witness recovered.
 
+### Every first-letter selector for the case-flip rule, exhaustive, 2026-08-17
+
+The certified rule marks a paragraph when its first letter is not one of I, T, A, S, M. That
+selector is a set of initials, and it was chosen for the Finney post, not for the chapter, so
+the letters that select the chapter's own marked paragraphs need not be the same 5. The
+chapter's 273 paragraphs use 22 distinct initials, so the entire family of "mark the
+paragraphs whose initial is in S" rules is 2^22 = 4,194,304 selectors, which is small enough
+to close rather than guess at. Each selector was hashed under both CR LF conventions.
+
+Result: 8,388,608 derivations in 147.2 minutes on 2 cores, **0 match**. Witness recovered:
+the selector {F, W}, planted inside the space. It was reported twice, once as {F, W} and once
+as {?, F, W}, because the chapter's single paragraph with no alphabetic character cannot be
+marked, so adding it to a selector is a no-op that produces byte-identical text. That
+degeneracy is expected and is a second, unplanned consistency check on the enumeration.
+
+Closed: no first-letter selector, under either CR LF convention, turns the whole chapter into
+either Real Big Block address. If the answer is the whole chapter with paragraphs marked, the
+paragraphs are not chosen by their first letter.
+
 ### Every marking of Hal Finney's 16 paragraphs, exhaustive, 2026-08-17
 
 Stage 2's question is Stage 1's answer, so one reading is that Stage 2's answer is the same
