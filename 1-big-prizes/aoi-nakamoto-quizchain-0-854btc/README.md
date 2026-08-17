@@ -173,6 +173,20 @@ Reproduced 2026-08-16.
    starts with `f8e`, matching both prefixes the author published for Block 76;
    neither of 2 other independently solved calibration blocks (73 and 74) shows
    any sign this chain is the author's real answer.
+8. Real Big Block has 2 doors, not 1, and every sweep should aim at both. The author
+   funded `1EFojcAo2vbhRGCGCa7q8Wwvzss28mhQYC` on 2019-07-24, then moved the prize on
+   2019-07-30 after "hashing with a slightly different solution", and her own 2 posts
+   pin down what "slightly different" means: the old answer had "only one line break
+   between paragraphs" and the new one has "two line breaks between each of them". The
+   paragraph text is therefore the same in both; only the separator changed. The
+   superseded address holds nothing, but recovering its text hands over the live answer
+   for free, so it belongs in the target set of every candidate sweep. It costs no extra
+   derivations, since one derived address is compared against all targets at once.
+9. The chapter's stored markup contains 10 `<br>` tags inside its 273 `<p>` blocks. Those
+   are single line breaks that survived the paste to the site rather than being doubled
+   into paragraph breaks, which is a direct fingerprint of the "extra line breaks" edit
+   the author says is needed to solve the block, and reading them as paragraph boundaries
+   gives a 283-paragraph text that no earlier sweep used as its base.
 
 ## What has been tested
 
@@ -187,6 +201,8 @@ Full ledger in [analysis/tested.md](analysis/tested.md). Summary:
 | Block 76: standard BIP44/49/84 derivations, paths, passphrases on the one chain found by search | standard space plus 24,564 off-by-one variants | MD5 to BIP39 to address compare | 0 match | yes: calibrated on blocks 73 and 74 | 2026-08-15 |
 | Block 76: word-transform "salves" on "change to" / "from change to" | approximately 53,000 candidate solutions | MD5-prefix filter, then derivation on survivors | 0 match | yes | 2026-08-15 |
 | Block 76: scripted dictionary-times-corpus sweep | approximately 3.2x10^11 MD5, approximately 78,000,000 derivations | MD5-prefix filter, then derivation on survivors | 0 match | yes: calibrated on blocks 73 and 74 | 2026-08-15 |
+| RBB: every contiguous range of the chapter's 273 paragraphs, 32 serializations each | 1,196,832 texts at 3 address indexes | MD5 to BIP39 to address compare, against 4 addresses including the superseded one | 0 match, complete sweep of its space | yes: planted in-space witness recovered | 2026-08-17 |
+| RBB: the `<br>`-split reconstruction of the chapter (283 paragraphs rather than 273) | 128 texts at 6 address indexes | same | 0 match | yes | 2026-08-17 |
 
 Cumulative: approximately 272 million candidates tested against Real Big Block
 and approximately 78 million derivations plus approximately 78,000 smaller

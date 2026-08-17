@@ -48,6 +48,43 @@ total and is the only row certified as a complete sweep of its stated space (all
 40 bases, every single edit); every other row is a targeted, not exhaustive,
 test of one specific hypothesis about which paragraphs were modified.
 
+### Contiguous paragraph ranges of the chapter, 2026-08-17
+
+Every row above picks paragraphs by some property (a planted group, a name, a first
+letter). This sweep picks them by position instead and closes that shape completely: every
+one of the 37,401 contiguous ranges of the chapter's 273 paragraphs, each under 2
+paragraph forms (as stored, and whitespace-stripped), 2 rule states (unmodified, and the
+certified case-flip applied), 4 separator conventions and both trailing-newline choices,
+which is 32 candidate texts per range and 1,196,832 in total, each derived at 3 address
+indexes.
+
+The target set is 4 addresses, not 2: both open escrows, the solved Stage One address, and
+the superseded Real Big Block address `1EFojcAo2vbhRGCGCa7q8Wwvzss28mhQYC`. Adding the
+superseded one costs nothing and doubles the chance of a hit, because the author says the
+two differ only slightly and describes the difference as the line-break count, so recovering
+the old text hands over the paragraph set for the live one.
+
+Result: 1,196,832 candidate texts derived in 9.3 minutes on 4 cores (2,142 per second), 0
+match. Planted witness recovered: a real candidate from inside the sweep's own space
+(paragraphs 100 to 104, stripped, case-flip applied, blank-line separator) whose address was
+added to the target set and was reported by the slice that covers it.
+
+This closes "the answer is a contiguous run of the chapter's paragraphs, as stored". It does
+not close non-contiguous selections, which is where the earlier subset rows sit.
+
+### A reconstruction note the sweeps above do not cover
+
+The chapter's stored markup is 273 `<p>` blocks containing 10 `<br>` tags. A `<br>` is a
+displayed line break that never became its own paragraph, which is exactly the artifact the
+author describes: she typed single line breaks, the site would not render them, so she
+doubled them, and the 10 that stayed `<br>` are single breaks that survived the paste.
+Reading them as paragraph boundaries gives 283 paragraphs rather than 273, a different byte
+sequence from anything in the rows above. Tested on 2026-08-17 across 4 reconstructions
+(as stored, split on `<br>`, split and stripped, `<br>` replaced in place by a newline), 4
+leading offsets, both rule states, both line-break conventions and both trailing choices:
+128 texts at 6 address indexes, 0 match, witness reproduced through the same code path. The
+reconstruction stays on the table as a base for other selections; only these 128 are closed.
+
 ## Quizchain2 Block 76 (0.077 BTC)
 
 The chain a community player found in 2019 (`solution = "format"`,
