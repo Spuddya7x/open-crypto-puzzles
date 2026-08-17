@@ -92,6 +92,21 @@ Re-run so far under the stated bytes: all 33 chapters whole-text, 4 paragraph fo
 states, 4 leading offsets, 4 separators and 4 trailing choices, 16,896 texts at 4 address
 indexes, 0 match, witness recovered.
 
+### The author's own quotation-mark device, 2026-08-17
+
+In "Quizchain as a Password Manager" she describes wrapping the hashed string in quotation
+marks: "we will add quotation marks before and after the string", a device she credits to
+block 42 and describes as putting the password out of reach of any cracker. Her round-2
+block 2 chain then hashes `"BaSCifCatfAaa1i"Metamon` with the quotes
+inside the hashed bytes, and the oracle's selftest now certifies exactly that. If she used
+the same device on Real Big Block, every candidate anyone has tested is off by 2 bytes.
+
+Tested: each of the 33 chapters, whole text, in 2 paragraph forms, 2 rule states, 3 leading
+offsets, 4 separators, 6 quoting conventions (none, straight double, curly double, single,
+opening only, closing only) and 3 trailing choices. 28,512 texts at 4 address indexes, 0
+match, witness recovered. The device stays worth applying to any narrower candidate that
+comes up later; it is closed only for whole-chapter texts.
+
 ### Every first-letter selector for the case-flip rule, exhaustive, 2026-08-17
 
 The certified rule marks a paragraph when its first letter is not one of I, T, A, S, M. That

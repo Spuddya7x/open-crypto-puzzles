@@ -136,11 +136,24 @@ holds the rights to. Supply your own candidate text to test it.
 vector, given in the round-1 corpus: entropy `2941774a2abec9f30c7d6777d1d53d91`,
 at BIP44 index 1 ("my 2nd private key"), derives WIF
 `L5Z66qPmUkTAsWQywjRNHDxHrX6J1X1SQedp6V8QsbaXR7rGd6ex` exactly, and that WIF
-appears at no other index. This certifies the MD5-to-address transform itself,
-without needing any third-party text. The selftest also checks the
-`--flip-case` helper against a synthetic (non-puzzle) example sentence, and the
-`--block76-filter` helper against the community-found `format` / `before TOMI`
-pair.
+appears at no other index.
+
+As of 2026-08-17 the selftest also covers the pipeline's 2 outer links, so it
+certifies source text to address rather than starting midway, and it still needs
+no third-party text. The **preimage** of that entropy is recovered from the
+author's own chapter "Quizchain as a Password Manager", where she builds a
+password from the first letter of every 7th word of a Wikipedia paragraph, wraps
+it in quotation marks and appends a Pokemon name: `"BaSCifCatfAaa1i"Metamon`
+MD5s to `2941774a...` exactly. And the **next link** of the same published chain
+fixes the trailing bytes of a hash input in her own hand: that WIF, hashed as
+bare UTF-8 with no trailing newline and no quoting, gives
+`7b44cc11c866ab85b7078c43ad6795e1`, which is the entropy she states for the next
+block; the same WIF with a trailing newline does not, and the selftest asserts
+both directions.
+
+The selftest also checks the `--flip-case` helper against a synthetic
+(non-puzzle) example sentence, and the `--block76-filter` helper against the
+community-found `format` / `before TOMI` pair.
 
 This does not, by itself, reproduce Block 77 Stage One end to end, since that
 needs Hal Finney's bitcointalk post text, which this repository does not ship.

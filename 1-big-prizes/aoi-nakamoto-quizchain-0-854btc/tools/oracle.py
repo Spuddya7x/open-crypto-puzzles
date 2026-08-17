@@ -62,6 +62,21 @@ TARGETS = {
 VECTOR_ENTROPY = "2941774a2abec9f30c7d6777d1d53d91"
 VECTOR_WIF_INDEX1 = "L5Z66qPmUkTAsWQywjRNHDxHrX6J1X1SQedp6V8QsbaXR7rGd6ex"
 
+# The preimage of that entropy, recovered 2026-08-17 from the author's own
+# chapter "Quizchain as a Password Manager": she builds a password by taking the
+# first letter of every 7th word of a Wikipedia paragraph, wrapping the result in
+# quotation marks, and appending a Pokemon name, with no separator anywhere. Her
+# round-2 block 2 walkthrough then hashes that string, and this is the string.
+# It turns the selftest into an end-to-end check of the whole pipeline, source
+# text included, using only her own material.
+VECTOR_TEXT = '"BaSCifCatfAaa1i"Metamon'
+
+# The second link of that same published chain: the WIF above, hashed as bare
+# UTF-8 with no trailing newline, is the entropy for the next block. This is the
+# convention check that matters most for Real Big Block, because it fixes the
+# trailing bytes of a hash input in the author's own hand.
+VECTOR_WIF_ENTROPY = "7b44cc11c866ab85b7078c43ad6795e1"
+
 # Initials rule confirmed on the solved sibling lot Block 77 Stage One: of a
 # text's paragraphs, the ones whose first letter is NOT one of these get the
 # case-flip rule applied (see _flip_case). ITASM are the initials that appear
@@ -170,6 +185,24 @@ def selftest() -> bool:
     print(f"that WIF appears at no other index (no collision): {'OK' if part1b else 'FAIL'}")
     ok = ok and part1b
 
+    # Part 1c: the same vector from its source text, so the selftest covers the
+    # whole pipeline rather than starting at the entropy. The author published
+    # both the string and the entropy it hashes to.
+    part1c = md5_entropy(VECTOR_TEXT).hex() == VECTOR_ENTROPY
+    print(f"author's own source text MD5s to that entropy: {'OK' if part1c else 'FAIL'}")
+    ok = ok and part1c
+
+    # Part 1d: the next link of her published chain. Hashing the WIF as bare
+    # UTF-8, with no trailing newline and no quoting, gives the next block's
+    # entropy. This is what fixes the trailing bytes of a hash input.
+    part1d = md5_entropy(VECTOR_WIF_INDEX1).hex() == VECTOR_WIF_ENTROPY
+    print(f"that WIF, hashed bare with no trailing newline, gives the next entropy: {'OK' if part1d else 'FAIL'}")
+    ok = ok and part1d
+
+    part1e = md5_entropy(VECTOR_WIF_INDEX1 + "\n").hex() != VECTOR_WIF_ENTROPY
+    print(f"the same WIF with a trailing newline does not: {'OK' if part1e else 'FAIL'}")
+    ok = ok and part1e
+
     # Part 2: the flip_case rule, tested on a synthetic (non-puzzle) example,
     # since this script ships no copyrighted source text.
     example = "When the wind blows across the plain"
@@ -189,11 +222,12 @@ def selftest() -> bool:
     if ok:
         print("SELFTEST OK")
         print(
-            "Note: this certifies the MD5-to-address transform and the 2 helper "
-            "functions. It does NOT reproduce Block 77 Stage One end to end, "
-            "since that needs Hal Finney's bitcointalk post text, which this "
-            "repository does not ship (third-party copyrighted content). Feed "
-            "that text yourself to apply_stage_one_rule() to reproduce it."
+            "Note: this certifies the whole source-text-to-address pipeline "
+            "against a chain the author published herself, plus the 2 helper "
+            "functions. It does NOT reproduce Block 77 Stage One, since that "
+            "needs Hal Finney's bitcointalk post text, which this repository "
+            "does not ship (third-party copyrighted content). Feed that text "
+            "yourself to apply_stage_one_rule() to reproduce it."
         )
     return ok
 
