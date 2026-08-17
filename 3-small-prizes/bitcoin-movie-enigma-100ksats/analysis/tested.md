@@ -137,3 +137,17 @@ account 0, indexes 0 to 2. The intruder rule is therefore not the only thing mis
 title-to-word rule is now the prime suspect: 4 of 33 identified titles carry no BIP39 word,
 which the author's own "transform 'somehow' each movie title" wording does not require to be
 a substring at all.
+
+## Release year as a wordlist index: refuted by inspection, 2026-08-17
+
+The obvious replacement for the substring rule is the film's release year read as a BIP39
+index, which is attractive because it gives every title a word, including the four that
+contain none. It does not survive a look at the numbers. Film years here run 1946 to 2018,
+and BIP39 positions 1946 to 2018 are all in one narrow alphabetical band: `veteran`,
+`virus`, `wagon`, `warfare`, `warrior`, `wear`, `welcome`, `wine`, `winter`, `wire`. A
+24-word seed drawn from that band would be 24 words starting with v or w. Worse, five of
+the 34 panels are 1979 films (Alien, Mad Max, Apocalypse Now, Escape from Alcatraz, Star
+Trek: The Motion Picture), which would all map to the same word, so the seed would have to
+repeat `warrior` up to five times or those five films would all have to be intruders, out
+of a budget of ten. Refuted without spending compute; the same argument kills any
+year-derived index, 0-based or 1-based.

@@ -16,8 +16,8 @@ what it claims to.
 ## The pools
 
 Each riddle's pool is my reading of it, ranked, every word checked to be in the BIP39
-English list. The three I would bet on are position 2 `kingdom` ("a realm where the crown
-is law"), position 11 `umbrella` ("it only works when it's open, and it's there to shield
+English list. The three I would bet on are position 2 `kingdom` (the hint
+describing a domain where the crown is law), position 11 `umbrella` ("it only works when it's open, and it's there to shield
 you"), and position 12 `spot` ("a single mark on a map, or the act of finding it", the
 noun and the verb in one word). The three vaguest are 1 ("presence without permanence"),
 4 ("born twice, seen once") and 7 ("you'll probably agree this hunt is..."), and those get
@@ -61,7 +61,15 @@ Ten pairs drawn from the five riddles I am least sure of (1, 4, 6, 7, 10), each 
 ranging over the full wordlist with the other positions at my best readings: 41,943,040
 combinations, about 2.6 million checksum-valid derivations at `m/84'/0'/0'/0/0`.
 
-RESULT_PENDING_L004
+Result: 2,624,526 checksum-valid derivations in 88.3 minutes, 0 matches, witness recovered.
+2026-08-17.
+
+Cumulative for this folder tonight: 5,132,003 witnessed derivations across four sweep
+shapes, 0 matches. Everything searched assumes the four italic-marked words are right, the
+path is `m/84'/0'/0'/0/0` with no passphrase, and at least three of my five shakiest riddle
+readings are correct. The cheapest thing left is not more compute: it is reading the four
+marked articles again to confirm the italic words still say what the ledger says, and
+checking the other eight riddle-linked pages for the same marker.
 
 ## What this does and does not close
 
