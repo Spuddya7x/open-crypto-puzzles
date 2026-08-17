@@ -7,9 +7,11 @@ posting in October 2019 without ever reclaiming her own puzzle funds. Every
 block was solved and swept by readers except the last two she published: the
 second and final stage of "Real Big Block" (0.777 BTC) and "Quizchain2 Block
 76" (0.077 BTC), both still funded seven years later. The MD5-to-BIP39
-derivation mechanism is confirmed exactly, including a case-flip rule proven on
-a solved sibling lot; what remains is the precise source text for Real Big
-Block and a short answer to a word riddle for Block 76.
+derivation mechanism is confirmed exactly, end to end from a source text, along
+with a case-flip rule proven on a solved sibling lot and the separator's exact
+bytes in the author's own words; what remains is which paragraphs of which
+chapter she hashed for Real Big Block, and a short answer to a word riddle for
+Block 76.
 
 ## At a glance
 
@@ -24,7 +26,7 @@ Block and a short answer to a word riddle for Block 76.
 | Status | OPEN |
 | Puzzle type | bip39-seed, word-selection |
 | Target format | source text (candidate answer), MD5 to 128-bit entropy, BIP39 mnemonic, BIP44 `m/44'/0'/0'/0/i` for i = 0 to 5, P2PKH address |
-| Certified oracle | yes: `tools/oracle.py --selftest` (certified against the author's own published entropy-to-WIF vector; see "Certified against" for what is and is not covered) |
+| Certified oracle | yes: `tools/oracle.py --selftest` (certified end to end, source text to address, against a 2-link chain the author published herself; see "Certified against" for what is and is not covered) |
 | What remains | Real Big Block: which paragraphs of which chapter she hashed. The transform, the case-flip rule and now the separator's exact bytes (CR LF CR LF, in her own words) are all confirmed, and the candidate source text is 33 chapters rather than 1. Block 76: a short answer to a published word riddle, since no derivation of the one candidate chain found by search reaches the address |
 | Series | this folder covers the 2 open lots of the approximately 90-block Quizchain series; the rest were solved by other readers in 2019 |
 
@@ -239,6 +241,8 @@ Full ledger in [analysis/tested.md](analysis/tested.md). Summary:
 | RBB: every marking of Hal Finney's 16 paragraphs, 3 modes, 4 separators | 1,572,864 texts at 3 address indexes | same | 0 match, complete sweep of its space | yes: the real Stage One answer was the only hit in the whole space | 2026-08-17 |
 | RBB: every contiguous range of all 33 chapters, 2 paragraph forms, 2 rule states, CR LF separators | 7,490,096 texts at 3 address indexes | same | 0 match, complete sweep of its space | yes: 33 planted witnesses, 1 per chapter, all recovered | 2026-08-17 |
 | RBB: every first-letter selector for the case-flip rule on the whole chapter, 2^22, both CR LF conventions | 8,388,608 derivations | same | 0 match, complete sweep of its space | yes: planted in-space selector recovered | 2026-08-17 |
+| RBB: every contiguous range of all 33 chapters, repeated under bare-newline separators | 7,490,096 texts at 3 address indexes | same | 0 match, complete sweep of its space | yes: 33 planted witnesses, all recovered | 2026-08-17 |
+| RBB: the author's own quotation-mark device, all 33 chapters, 6 quoting conventions | 28,512 texts at 4 address indexes | same | 0 match | yes | 2026-08-17 |
 
 Cumulative: approximately 272 million candidates tested against Real Big Block
 and approximately 78 million derivations plus approximately 78,000 smaller
@@ -248,32 +252,45 @@ which rows are complete sweeps versus targeted tests, are in
 
 ## Open leads, ranked
 
-1. **Reconstruct the 2019 browser-copy rendering of the Wattpad chapter**
+1. **Read the author's Reddit comments from 2019-07-30 to 2019-08-04** (about an
+   hour, needs a route to Reddit). This is now the highest-value lead by a
+   distance, and the reason is what re-reading one screenshot of that thread did
+   on 2026-08-17: it produced the CR LF fact, which no amount of compute would
+   have produced. She rehashed on the 30th and went silent on the 4th, and every
+   broad structural shape either side of that window is now closed, so a
+   sentence about *which paragraphs* is the missing piece. Reddit blocks this
+   repository's network egress at the IP level (403 on the API, the JSON
+   endpoints, every Redlib mirror, and archive.org's captures), so this needs a
+   human with a browser. Confirmed by a new detail that, applied, matches;
+   killed by a full read producing nothing new.
+2. **Non-contiguous paragraph selections** (hours). Every contiguous shape is
+   closed: all 33 chapters, both separator families, both paragraph forms, both
+   rule states. Marking by first letter is closed. What survives is a selection
+   that is neither a run nor a letter class, which is exactly what her own
+   explanation describes when she picks out individual paragraphs. Confirmed by
+   a match; killed only by finding a principled selector and exhausting it.
+3. **Reconstruct the 2019 browser-copy rendering of the Wattpad chapter**
    (hours). The chapter's API storage today has no blank paragraphs, but the
    author describes typing 2 line breaks between paragraphs; Wattpad likely
    normalized this away, and what she hashed was probably what her browser
-   rendered and she copied in 2019, not today's raw storage. Confirmed by
-   re-testing the already-tried paragraph selections against a faithfully
+   rendered and she copied in 2019, not today's raw storage. The 10 `<br>` tags
+   inside the stored `<p>` blocks are the surviving fingerprint of that edit
+   (established fact 9) and give a 283-paragraph base that is now used in every
+   sweep. Confirmed by re-testing paragraph selections against a faithfully
    reconstructed 2019 rendering; killed if that still does not match.
-2. **Read the 27 posts and comments between the rehash and the shutdown**
-   (about an hour). The author posted 2019-07-30 to 2019-08-04 before going
-   silent; these have been read once for an explicit hint but not re-read
-   systematically against the now-narrower list of untested paragraph
-   combinations. Confirmed by a new detail that, applied and tested, matches;
-   killed by a full re-read producing nothing new.
-3. **A bounded 2-character-edit sweep on the strongest base texts** (about an
+4. **A bounded 2-character-edit sweep on the strongest base texts** (about an
    hour on a rented GPU). The 1-character sweep is exhaustive; a 2-character
    sweep restricted to the small set of NBSP and line-ending pairs, rather than
    every position, is a bounded extension. Confirmed by a match in that bounded
    space; killed by exhausting it with none.
-4. **Identify what "76" indexes for Block 76** (minutes per candidate corpus).
+5. **Identify what "76" indexes for Block 76** (minutes per candidate corpus).
    A method confirmed on 3 sibling blocks uses the block number as a position
    index into a specific numbered corpus; every corpus tried so far does not
    contain "change" at position 76. Confirmed by a match in an untried corpus
    (candidates include a fuller archive of Hal Finney's tweets, Satoshi's
    SourceForge posts, or the author's own r/Grycoin posts read as their own
    sequence); killed by exhausting the remaining candidate corpora.
-5. **A short, human-reasoned answer to "change to" / "from change to"**
+6. **A short, human-reasoned answer to "change to" / "from change to"**
    (minutes per candidate). The author's confirmed style elsewhere in the
    series favors short, punchy wordplay answers over long dictionary phrases; a
    free filter (`tools/oracle.py --block76-filter`) checks any candidate in

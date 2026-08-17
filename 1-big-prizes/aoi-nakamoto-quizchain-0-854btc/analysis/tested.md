@@ -158,7 +158,11 @@ paragraph forms (`<p>` blocks, and `<p>` blocks further split on their `<br>` ta
 states, separators `\r\n\r\n` and `\r\n`, and both trailing choices, which is 16 candidate
 texts per range. Result, 2026-08-17: 7,490,096 texts derived in 128.2 minutes on 2 cores,
 **0 match**, and all 33 planted witnesses recovered, one per chapter, so no chapter went
-unsearched. The same space under `\n\n` and `\n` is the sweep now running.
+unsearched.
+
+The same space under `\n\n` and `\n`: 7,490,096 texts in 66.2 minutes on 4 cores, **0
+match**, 33/33 witnesses recovered. Both separator families are therefore closed for this
+shape, whichever way her "13 10 13 10" is read.
 
 ### A reconstruction note the sweeps above do not cover
 
