@@ -117,8 +117,14 @@ the separator question for Stage One, again and independently, as `\n\n` rather 
 
 The author's Wattpad account publishes exactly one story, and that story has 33 chapters.
 The folder tracked only the chapter her Reddit posts link to. Every other chapter is hers
-and none had been tested. Whole-text forms of all 33 are covered by the row above; every
-contiguous range of all 33, under both CR LF conventions, is the sweep now running.
+and none had been tested. Whole-text forms of all 33 are covered by the row above.
+
+Every contiguous range of all 33 chapters, under both CR LF conventions: each chapter in 2
+paragraph forms (`<p>` blocks, and `<p>` blocks further split on their `<br>` tags), 2 rule
+states, separators `\r\n\r\n` and `\r\n`, and both trailing choices, which is 16 candidate
+texts per range. Result, 2026-08-17: 7,490,096 texts derived in 128.2 minutes on 2 cores,
+**0 match**, and all 33 planted witnesses recovered, one per chapter, so no chapter went
+unsearched. The same space under `\n\n` and `\n` is the sweep now running.
 
 ### A reconstruction note the sweeps above do not cover
 

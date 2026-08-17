@@ -224,6 +224,7 @@ Full ledger in [analysis/tested.md](analysis/tested.md). Summary:
 | RBB: all 33 chapters of the author's story, whole-text, under her stated CR LF bytes | 16,896 texts at 4 address indexes | same | 0 match | yes | 2026-08-17 |
 | RBB: the planted F/F/W/W group hypothesis re-run under CR LF, 3 marking modes | 7,680 texts at 6 address indexes | same | 0 match | yes | 2026-08-17 |
 | RBB: every marking of Hal Finney's 16 paragraphs, 3 modes, 4 separators | 1,572,864 texts at 3 address indexes | same | 0 match, complete sweep of its space | yes: the real Stage One answer was the only hit in the whole space | 2026-08-17 |
+| RBB: every contiguous range of all 33 chapters, 2 paragraph forms, 2 rule states, CR LF separators | 7,490,096 texts at 3 address indexes | same | 0 match, complete sweep of its space | yes: 33 planted witnesses, 1 per chapter, all recovered | 2026-08-17 |
 
 Cumulative: approximately 272 million candidates tested against Real Big Block
 and approximately 78 million derivations plus approximately 78,000 smaller
