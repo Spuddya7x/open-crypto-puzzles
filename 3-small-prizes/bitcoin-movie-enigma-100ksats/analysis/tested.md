@@ -81,3 +81,35 @@ counted per candidate word against the full BIP39 wordlist. This measurement rul
 out "every title contains exactly one obvious word" as the full rule (4 titles have
 none, several have more than one), but does not by itself say which of several
 candidate words is the intended one, or what the rule is for the 4 titles with none.
+
+## Combinations of MPAA ratings, tested at the oracle, 2026-08-17
+
+The list above says no single IMDb criterion splits 34 into 24 and 10. Ratings taken in
+*combination* do, and there are exactly three such sets: APPROVED+PG+TV-14 (2+7+1),
+G+PG+TV-14 (2+7+1), and APPROVED+G+PG-13+TV-14 (2+2+5+1). The counts come straight from
+`data/films.csv` and panel 11's rating is unknown, so it never joins an intruder set.
+
+One of the three is singled out by the title-to-word rule itself: the four identified
+titles that contain no BIP39 word at all (The Goonies, Barry Lyndon, Sharknado, Raiders of
+the Lost Ark) *have* to be intruders, and only G+PG+TV-14 contains all four. That makes it
+the strongest intruder rule this folder has had.
+
+Tested: the 24 keepers read in panel order, each panel contributing a BIP39 word from its
+title, panel 11 (unidentified) ranging over the whole 2048-word list, panel 34 read as
+`ring` from the Dead Ringers identification. Derivation is BIP84 `m/84'/0'/0'/0/i` for i in
+0 to 2, on a harness that reproduces the folder oracle's own address for the public 24-word
+vector exactly.
+
+- APPROVED+PG+TV-14: 1,572,864 candidates, 6,137 checksum-valid, 0 matches, witness planted
+  and recovered.
+- G+PG+TV-14: 786,432 candidates, 3,061 checksum-valid, 0 matches, witness planted and
+  recovered.
+- APPROVED+G+PG-13+TV-14: not run. Its keeper set contains three of the four wordless
+  titles, so under the title-to-word rule those panels have no word to contribute and the
+  space blows up to 2.8e14; the rule contradicts the mechanism rather than being expensive.
+
+So the rating channel is now closed for the two consistent partitions, under the reading
+that each keeper contributes a BIP39 word found literally in its title. What is not closed:
+that reading itself. Panel 34's identification is still disputed, and several panels carry
+2 to 4 candidate words where the sweep tried all of them, so a negative here argues against
+the rating rule rather than against any particular word.

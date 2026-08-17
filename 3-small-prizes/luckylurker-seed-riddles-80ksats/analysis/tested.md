@@ -47,7 +47,21 @@ of 8 guesses. This sweep assumes less: one position ranges over all 2048 BIP39 w
 the other 7 sit at their top-3 readings. 35,831,808 combinations, about 2.24 million
 checksum-valid derivations at `m/84'/0'/0'/0/0`. Witness recovered.
 
-RESULT_PENDING
+Result: 2,238,963 checksum-valid derivations in 41.4 minutes, 0 matches, witness recovered
+in the first slice. Closed negative for "exactly one of my eight readings is wrong and the
+other seven are in my top three". 2026-08-17.
+
+Before that, a cheaper version of the same idea: each of the 8 positions freed over all
+2048 words with the other 7 held at my single best reading, 16,384 combinations, 1,023
+checksum-valid, 0 matches, witness recovered.
+
+## L-004: two riddle positions free at once
+
+Ten pairs drawn from the five riddles I am least sure of (1, 4, 6, 7, 10), each pair
+ranging over the full wordlist with the other positions at my best readings: 41,943,040
+combinations, about 2.6 million checksum-valid derivations at `m/84'/0'/0'/0/0`.
+
+RESULT_PENDING_L004
 
 ## What this does and does not close
 

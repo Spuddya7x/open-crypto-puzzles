@@ -138,6 +138,7 @@ Full ledger in [analysis/tested.md](analysis/tested.md). Summary:
 | Intruders = won at least 1 Oscar | recount as films are identified | direct count | looked correct at 10/21, refuted at 11/34 | n/a: direct count | 2026-08-04 |
 | Intruders = adapted from a novel | recount as films are identified | direct count | looked correct at 10/31, refuted at 12/34 | n/a: direct count | 2026-08-04 |
 | About 25 further IMDb-field criteria | recount as films are identified | direct count | none reaches an exact 24/10 split | n/a: direct count | 2026-08-04 |
+| Intruders = a combination of MPAA ratings (3 sets reach 24/10; 2 are consistent with the title-to-word rule) | 2,359,296 candidates, 9,198 checksum-valid | BIP39 checksum then BIP84 derivation, panel 11 free over the wordlist | 0 match | yes: planted witness recovered in both runs | 2026-08-17 |
 
 ## Open leads, ranked
 
