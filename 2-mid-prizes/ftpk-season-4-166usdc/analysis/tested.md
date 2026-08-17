@@ -78,3 +78,22 @@ would find a real answer if one were in scope, since most of the 12 words are no
 established; each row's witness reflects only whether that specific check's own method
 was validated (a positive control), not whether the full derivation oracle has been
 exercised on a real solution.
+
+## Ordering sweep over the hidden page's 12 words, 2026-08-17
+
+If those 12 words are this season's answers, the only thing missing is their order, so the
+whole remaining space is 12! = 479,001,600 orderings, of which 1 in 16 passes the BIP39
+checksum: about 29.9 million derivations at `m/44'/60'/0'/0/0`, plus the parent path
+`m/44'/60'/0'/0` for free since it shares the first four steps. Every derived address is
+compared against all 19 Ethereum and Base addresses in this repository at once, so a hit on
+Season 2's escrow would be caught by the same run.
+
+The sweep is cut into 12 slices by first word. Each slice carries its own planted canary,
+the first checksum-valid ordering starting with that word, whose address is added to the
+target set: a slice that does not report its canary has not searched what it claims to.
+
+Measured rate: 2.49 million derivations per slice, 305 per second per core on this machine,
+which matches the 956 per second the earlier oracle benchmark measured for bip_utils on
+faster hardware closely enough to be the same order.
+
+STATUS_PENDING
