@@ -126,7 +126,17 @@ Full ledger in [analysis/tested.md](analysis/tested.md). Summary:
 
 ## Open leads, ranked
 
-1. **Identify the common mechanic across the 12 games** (hours). The leading reading,
+1. **Order the 12 words the hidden page already names** (hours of compute, no insight
+   needed). If that page is named by this season's answers, the word set is public and only
+   the order is missing: 12! is 479,001,600 orderings, 1 in 16 passes the BIP39 checksum,
+   so about 30 million derivations, which is a few hours on 4 cores. Confirmed by a match at
+   `m/44'/60'/0'/0/0`; killed by an exhaustive witnessed sweep, which would mean the page
+   name is not this season's answer set, or the wallet is not at the standard path.
+2. **Check the other 11 page integers against the prediction** (minutes, needs site access).
+   The reading in established fact 6 predicts every game's page name exactly: game 2 is
+   `md5(412).html`, then 796, 117, 1744, 968, 76, 552, 1388, 1377, 505, 1508. One HTTP probe
+   each. Two hits would settle the mechanic; one clean miss would kill it.
+3. **Identify the common mechanic across the 12 games** (hours). The leading reading,
    from the author's own hint and the games built around dice, darts, and a board game,
    is that each game yields a number usable as a 1-to-2048 index into the BIP39 wordlist.
    Confirmed by a reading that correctly derives 2 or more of the already-established
