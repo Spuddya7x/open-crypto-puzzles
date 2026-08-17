@@ -92,6 +92,27 @@ Re-run so far under the stated bytes: all 33 chapters whole-text, 4 paragraph fo
 states, 4 leading offsets, 4 separators and 4 trailing choices, 16,896 texts at 4 address
 indexes, 0 match, witness recovered.
 
+### Every marking of Hal Finney's 16 paragraphs, exhaustive, 2026-08-17
+
+Stage 2's question is Stage 1's answer, so one reading is that Stage 2's answer is the same
+Finney post marked differently, and the chapter itself points at more structure in that post
+than Stage 1's marking uses: the I paragraph beside the F/F/W/W block, the "Today, Satoshi's
+true identity" paragraph, and the STNM last letters. That whole family is small enough to
+close outright. Every one of the 2^16 subsets of the post's 16 paragraphs, marked in each of
+3 modes (first letter lowered and last raised, first only, last only), joined by each of 4
+separators (`\n\n`, `\n`, `\r\n\r\n`, `\r\n`) and with or without a trailing newline:
+1,572,864 candidate texts, each derived at 3 address indexes.
+
+Result: exactly 1 hit in 1,572,864 candidates, and it is the real Stage One answer, mask
+`0x002e` (paragraphs 2, 3, 4 and 6, the F/F/W/W block), mode "both", separator `\n\n`,
+deriving `19TbyN5KCg1Lg7qHwezifsLVcdSa2Rj5KN`. That is the strongest certification available
+on this lot: the sweep recovered the one text in its space that is known to be correct, and
+nothing else. Neither Real Big Block address appears anywhere in the space.
+
+Closed: Stage 2's answer is not the Finney post under any paragraph marking. It also settles
+the separator question for Stage One, again and independently, as `\n\n` rather than
+`\r\n\r\n`, since the CR LF forms of the true marking were in the space and did not match.
+
 ### The candidate source text is 33 chapters, not 1, 2026-08-17
 
 The author's Wattpad account publishes exactly one story, and that story has 33 chapters.
