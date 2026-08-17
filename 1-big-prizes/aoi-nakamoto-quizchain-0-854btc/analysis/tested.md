@@ -72,6 +72,33 @@ added to the target set and was reported by the slice that covers it.
 This closes "the answer is a contiguous run of the chapter's paragraphs, as stored". It does
 not close non-contiguous selections, which is where the earlier subset rows sit.
 
+### Everything above used the wrong line break, 2026-08-17
+
+Every row on this page dated before today, and every sweep published on this lot anywhere,
+separated paragraphs with bare newlines. The author says otherwise, in the discussion thread,
+in reply to a player asking whether "two line breaks" meant one Enter press or two: "I mean
+the second one. Hit enter twice. This displays in Ascii as 13 10 13 10, according to
+asciivalue.com." ASCII 13 10 is CR LF. The live answer's separator is `\r\n\r\n` and the
+superseded answer's is `\r\n`.
+
+One row above did carry CRLF as 1 of its 4 separators, the contiguous-range sweep, so
+contiguous ranges of the `Second` chapter under `\r\n\r\n` are closed. Nothing else is: the
+2^17 subset row, the name and word selector rows, the paragraph-group rows and the
+266-million single-character-edit row were all run over newline-joined base texts, and each
+of them is worth re-running under CR LF. That is the cheapest large re-test available on
+this lot and it should be done before any new hypothesis is invented.
+
+Re-run so far under the stated bytes: all 33 chapters whole-text, 4 paragraph forms, 2 rule
+states, 4 leading offsets, 4 separators and 4 trailing choices, 16,896 texts at 4 address
+indexes, 0 match, witness recovered.
+
+### The candidate source text is 33 chapters, not 1, 2026-08-17
+
+The author's Wattpad account publishes exactly one story, and that story has 33 chapters.
+The folder tracked only the chapter her Reddit posts link to. Every other chapter is hers
+and none had been tested. Whole-text forms of all 33 are covered by the row above; every
+contiguous range of all 33, under both CR LF conventions, is the sweep now running.
+
 ### A reconstruction note the sweeps above do not cover
 
 The chapter's stored markup is 273 `<p>` blocks containing 10 `<br>` tags. A `<br>` is a

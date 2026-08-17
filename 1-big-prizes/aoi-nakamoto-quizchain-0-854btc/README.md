@@ -25,7 +25,7 @@ Block and a short answer to a word riddle for Block 76.
 | Puzzle type | bip39-seed, word-selection |
 | Target format | source text (candidate answer), MD5 to 128-bit entropy, BIP39 mnemonic, BIP44 `m/44'/0'/0'/0/i` for i = 0 to 5, P2PKH address |
 | Certified oracle | yes: `tools/oracle.py --selftest` (certified against the author's own published entropy-to-WIF vector; see "Certified against" for what is and is not covered) |
-| What remains | Real Big Block: the exact source text the author hashed on 2019-07-30 (the transform and rule are confirmed). Block 76: a short answer to a published word riddle, since no derivation of the one candidate chain found by search reaches the address |
+| What remains | Real Big Block: which paragraphs of which chapter she hashed. The transform, the case-flip rule and now the separator's exact bytes (CR LF CR LF, in her own words) are all confirmed, and the candidate source text is 33 chapters rather than 1. Block 76: a short answer to a published word riddle, since no derivation of the one candidate chain found by search reaches the address |
 | Series | this folder covers the 2 open lots of the approximately 90-block Quizchain series; the rest were solved by other readers in 2019 |
 
 ## The puzzle as published
@@ -81,22 +81,26 @@ reach the hash.
 ![Source text to P2PKH address, five stages linked by MD5, BIP39 and BIP44](images/01-pipeline-derivation.svg)
 *Figure 1. The MD5-to-address derivation pipeline (source: data/pipeline-stages.json, script tools/fig_pipeline.py), 2026-08-16.*
 
-For Real Big Block, the exact source text is confirmed to be the "Second"
-chapter, with a case-flip rule applied to some of its paragraphs, not the
-chapter's raw text. This rule is proven on the solved sibling lot Block 77
-Stage One: of that post's 16 paragraphs, the 4 whose first letter is not I, T,
-A, S or M get their first letter lowercased and their last letter uppercased,
-and the paragraphs are joined with a blank line; this reproduces
-`19TbyN5KCg1Lg7qHwezifsLVcdSa2Rj5KN` exactly. The "Second" chapter contains the
-same paragraph-initial pattern 3 times on its own, plus a quotation from the
-Finney post, but no combination of applying the rule to these 4 candidate
-groups (nor to the many related selections in `analysis/tested.md`) reproduces
-either the current or the superseded Real Big Block address. The Wattpad API
-confirms the chapter's `modifyDate` as 2019-07-23T23:12:04Z, 7 days before the
-current escrow was funded, so the text available today predates the funding and
-is very likely the version that was hashed; what is not settled is which exact
-byte sequence the author's own tool read from it, since Wattpad's storage
-normalizes away the blank lines she describes typing (see "Open leads").
+For Real Big Block, the source text is a chapter of the author's Wattpad story, with a
+case-flip rule applied to some of its paragraphs, not the chapter's raw text. The rule is
+proven on the solved sibling lot Block 77 Stage One: of that post's 16 paragraphs, the 4
+whose first letter is not I, T, A, S or M get their first letter lowercased and their last
+letter uppercased, and the paragraphs are joined with a blank line; this reproduces
+`19TbyN5KCg1Lg7qHwezifsLVcdSa2Rj5KN` exactly. The "Second" chapter contains the same
+paragraph-initial pattern 3 times on its own, plus a quotation from the Finney post, but no
+combination of applying the rule to these 4 candidate groups (nor to the many related
+selections in `analysis/tested.md`) reproduces either the current or the superseded Real
+Big Block address.
+
+Two constraints on the exact bytes are now settled, and both narrow this a great deal. The
+separator is CR LF, not a bare newline: the author gives its ASCII codes outright in the
+discussion thread (established fact 10), so the live answer joins paragraphs with
+`\r\n\r\n` and the superseded one with `\r\n`. And the candidate source is 33 chapters
+rather than 1 (established fact 11), several of them written in the week the escrow was
+funded. The Wattpad API confirms `Second`'s `modifyDate` as 2019-07-23T23:12:04Z, 7 days
+before the current escrow was funded, so the text available today predates the funding; the
+chapter is still the leading candidate, but it is no longer the only one, and the standalone
+`The Satoshi Code` covers the same material in 146 paragraphs of its own.
 
 For Block 76, a community player found, in 2019, that `solution = "format"`,
 `tomi = "before TOMI"` satisfies both published MD5-prefix hints (`1d` and
@@ -187,6 +191,20 @@ Reproduced 2026-08-16.
    into paragraph breaks, which is a direct fingerprint of the "extra line breaks" edit
    the author says is needed to solve the block, and reading them as paragraph boundaries
    gives a 283-paragraph text that no earlier sweep used as its base.
+10. **The separator is CR LF, not a bare newline.** Asked in the discussion thread whether
+    "two line breaks" meant one Enter press or two, the author answered: "I mean the second
+    one. Hit enter twice. This displays in Ascii as 13 10 13 10, according to
+    asciivalue.com." ASCII 13 10 is CR LF, so the live answer joins its paragraphs with
+    `\r\n\r\n` and the superseded one with `\r\n`. She was typing in a Windows editor. Every
+    row of the negatives ledger dated before 2026-08-17 used bare newlines as its primary
+    convention, which means the whole search has been running one byte per line break away
+    from what she published.
+11. The author's Wattpad account holds one story, "Second", of **33 chapters**, not the 1
+    this folder tracked. Her profile reads "Born to publish one story"; the story's own
+    description is "Hint for block 77". Four chapters were written in the week the escrow
+    was funded, including a standalone 146-paragraph `The Satoshi Code`, and 2 more are her
+    own indexes of every solved block with its question, solution and TOMI field. Part list
+    and paragraph counts in `data/wattpad-chapters.json`; quotes in `clues/author-posts.md`.
 
 ## What has been tested
 
@@ -252,6 +270,7 @@ Full notes: [analysis/leads.md](analysis/leads.md).
 | Path | What it is |
 |---|---|
 | `clues/author-posts.md` | short, dated quotes from the author's own Reddit posts, with links |
+| `data/wattpad-chapters.json` | the author's full 33-chapter part list with dates, paragraph counts and `<br>` counts, no chapter text |
 | `data/pipeline-stages.json` | the 6-stage label list for the derivation pipeline figure |
 | `data/blocks-structure.json` | the series structure and the 2 open gates, for the structure figure |
 | `analysis/tested.md` | the complete negatives ledger for both open lots |

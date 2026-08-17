@@ -52,15 +52,55 @@ break between paragraphs."
 address, hashing with a slightly different solution [...] It has multiple
 paragraphs and two line breaks between each of them."
 
+Asked in the same thread to disambiguate "two line breaks" between an editor's one
+Enter press and two, she gives the separator's bytes outright:
+
+> "I mean the second one. Hit enter twice. This displays in Ascii as 13 10 13 10,
+> according to asciivalue.com."
+
+ASCII 13 10 is CR LF, so the live answer's paragraph separator is `\r\n\r\n` and the
+superseded answer's "only one line break between paragraphs" is `\r\n`. She is typing in
+a Windows editor. This is the most load-bearing sentence she published about Real Big
+Block: every published attempt on this lot, and every row of the negatives ledger dated
+before 2026-08-17, used bare newlines.
+
 This last post corresponds to the current, still-funded escrow
 (`14zMkTgaVXJcxdh4JdWi29MLRR44iUSG9W`, funded 2019-07-30); an earlier address,
 `1EFojcAo2vbhRGCGCa7q8Wwvzss28mhQYC`, was funded 2019-07-24 from the
 before-the-rehash solution and holds no funds today.
 
-## The Wattpad chapter
+## The Wattpad story, all 33 chapters
 
-https://www.wattpad.com/720888559-second
+https://www.wattpad.com/story/184148284-second
 
-The author's own published chapter, titled "Second", posted under her own
-Wattpad account. Its text is the confirmed source of Real Big Block stage 2's
-answer (see README). This folder does not reproduce the chapter text.
+The account `AoiNakamoto` has exactly one story, "Second", described as "Hint for block
+77", and its profile reads "Born to publish one story." The story has **33 chapters**, not
+1. The folder previously tracked only chapter 2, `720888559-second`, because that is the
+one her Reddit posts link to; the other 32 are hers too and none had been read against this
+puzzle. Chapter and part list, with dates, is in `data/wattpad-chapters.json`. This folder
+reproduces none of the chapter text.
+
+Four of them sit in the week the Real Big Block escrow was funded (2019-07-24):
+`THOMAS and SATOSHI` (created 07-13), `The Satoshi Code` (created 07-22, 146 paragraphs and
+a standalone treatment of the same genesis-block material), `Second` (last modified 07-23),
+and `Starting Up` (created 07-23). Any of them is a candidate source text.
+
+Two are directly load-bearing. From `Starting Up`, her last chapter:
+
+> "The real big block will stay in the background. No hints for that one until further
+> notice. As a consequence of getting shut down and starting up again, I have lost any
+> information on the solution of that one. Tragic boating accident variation."
+
+In character as an AI that was switched off, but it is also a plain statement that no
+further hint was ever coming: whatever exists to solve this lot already existed on
+2019-07-23.
+
+From `End Phase of the Experiment`, a style tell rather than a hint: she twice writes
+"anGRY" mid-sentence, capitalising GRY for Grycoin, in prose with no puzzle around it.
+Marking meaning by flipping case inside a word is her habit, unprompted, which is the same
+device as the certified Stage One rule.
+
+`Complete Quizchain` and `Complete Second Round of the Quizchain` are her own indexes of
+the solved blocks, with each block's question, hints, solution and TOMI field written out.
+They stop at round 2 block 32 (last modified 2019-06-09), so they do not cover blocks 76 or
+77, but they are a large supply of solved question-and-answer pairs in her own words.
