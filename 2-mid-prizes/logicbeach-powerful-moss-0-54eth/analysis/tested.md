@@ -44,3 +44,43 @@ have been checked, 0 matches, 0 partial hits. The clock-and-grid mechanism itsel
 the hour position, word from the wordlist cell the numeral overlays) is confirmed by 3 hours
 that read with no row ambiguity at all; what remains open is resolving the row for the other 9
 hours past plus-or-minus 1, which the published 2004-pixel raster does not resolve further.
+
+## The background text's own geometry, measured 2026-08-17
+
+The flow text is not a mystery to be eyeballed: it is the 2048 words in list order, one
+space between them, set in a monospace face at **23.80 pixels per character**, on lines
+**48 pixels apart**, with the first line's glyph band starting at y=54 and 41 lines visible
+inside the circle. Line length measures at **171 characters**, from the fact that `leisure`
+(hour 12, row 2) and `stick` (hour 8, row 28) sit 26 rows and 4,417 characters apart, and
+`stick` and `strategy` share row 28 exactly 56 characters and 1,333 pixels apart.
+
+That geometry turns the readout into arithmetic rather than judgement: the word at a given
+pixel is `S[c0 + 171*row : ...]` indexed by `(x - x0)/23.80`. Fitting `c0` and `x0` by least
+squares on the three unambiguous hours reproduces `leisure` and `stick`, and lands within
+one character of `strategy`, so the model is right to about a character. What it does not
+fix is the row: a numeral spans 5 text rows, and its own vertical centre is what picks one,
+so the numerals whose centre falls near a row boundary stay ambiguous exactly as before.
+Reading all 12 hours through the fitted model agrees with the candidate columns above on 9
+of 12 hours and disagrees on hours 2, 4 and 9, where it lands one row off (its hour-4 read
+is `supreme`, and hour 4 is `strategy` by direct inspection). Treat the extra readings as
+widening the pools, not as corrections.
+
+## Reading order: all 24 cyclic orders, not 4
+
+The sweeps above fixed the words and varied 4 reading orders. A clock face has 24: twelve
+rotations times two directions. Sweeping all of them over the 3-candidate grid, widened to
+4 candidates at hours 2, 9 and 5 by the alternative reads above, is 69,984 word choices
+times 24 orders, 1,679,616 candidates, derived at `m/44'/60'/acc'/0/idx` for acc and idx in
+0 to 2 (the folder oracle's own neighbourhood). Harness certified against
+`tools/oracle.py` on the public BIP39 vector, and a witness drawn from inside the space was
+planted in the target set.
+
+Result: 1,679,616 candidates, 105,870 of them checksum-valid, 952,830 addresses derived,
+0 matches, 5.4 minutes at 328 candidates per second on 1 contended core. The planted
+witness was recovered, so this is a closed negative: no cyclic reading order of this grid
+derives the winner wallet, and the 4 orders tested earlier were not the gap.
+
+What that leaves: the reading order is not the missing piece, and the words are pinned to
+within one row each, so the next thing to doubt is the grid itself. Either one hour's word
+lies more than one row from its numeral's centre, or the seed is not read off the numerals
+at all.

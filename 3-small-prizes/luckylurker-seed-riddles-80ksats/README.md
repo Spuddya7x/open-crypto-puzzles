@@ -93,6 +93,14 @@ derives to `bc1qcr8te4kr609gcawutmrza0j4xv80jy8z306fyu` under
 |---|---|---|---|---|---|
 | The 8 riddle words are all inside plausible synonym pools | about 2,000,000 position-combinations across 3 pools and 3 derivation paths | BIP39 checksum filter, then BIP84/BIP49/BIP44 derivation and exact address match | about 125,000 checksum-valid mnemonics, 0 match | uncertified: no known-good candidate was planted in the pool to prove the sweep would have caught it | 2026-08-04 |
 
+One dictionary fact worth knowing before interpreting hint 10: `research` and `study` are
+not BIP39 words. "The systematic pursuit of the unknown" cannot be either of the two most
+natural English answers, and the in-dictionary readings are `science`, `inquiry`, `search`
+and `survey`. The three riddles I would now bet on are hint 2 `kingdom`, hint 11 `umbrella`
+("it only works when it's open, and it's there to shield you") and hint 12 `spot`, which
+carries the riddle's own noun-and-verb pun. Full pools and sweep results:
+[analysis/tested.md](analysis/tested.md).
+
 ## Open leads, ranked
 
 1. **Wait for or request the site's own canonical answer** (needs a person or
@@ -103,6 +111,12 @@ derives to `bc1qcr8te4kr609gcawutmrza0j4xv80jy8z306fyu` under
 2. **Re-check the other 8 articles for the same italic-tag device** (minutes).
    The marker is confirmed on 4 of 12 target articles; whether it extends to
    any of the remaining riddle-linked pages has not been checked.
+3. **Free two riddle positions at once over the whole wordlist** (hours). One free
+   position with the rest at their top-3 readings is already swept; the next step up is
+   every pair drawn from the five vaguest riddles (1, 4, 6, 7, 10), which is 10 pairs
+   times 2048 squared, about 2.6 million derivations. Confirmed by a match; killed by a
+   clean witnessed sweep, which would say the fault is in a reading I currently trust or
+   in the derivation path rather than in two riddles at once.
 
 ## Files in this folder
 
