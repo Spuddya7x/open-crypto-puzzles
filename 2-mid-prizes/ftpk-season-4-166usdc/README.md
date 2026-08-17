@@ -5,10 +5,11 @@ launched a fourth season on 2026-07-16: 12 independent mini-games, each worth on
 BIP39 word, unlocking an Ethereum wallet holding USDC. The author funded the escrow before
 announcing it and has topped it up more than once since, most recently confirmed by a
 tweet about an extra dollar added after someone used the paid checker. I mirrored the
-full site, certified the BIP44 derivation, and established one word with confidence and a
-second as a strong candidate. The author's own hint says most of the 12 games share one
-common mechanic; the leading reading is that each produces a number usable as a BIP39
-wordlist index.
+full site and certified the BIP44 derivation. The author's own hint says most of the 12
+games share one common mechanic, and the strongest evidence for what it is comes from the
+hidden page: its name is 12 BIP39 words, and the first of them is the word at the exact
+wordlist position that names game 1's page. Those 12 words are not the seed, though: all
+479,001,600 orderings of them derive neither escrow.
 
 ## At a glance
 
@@ -100,12 +101,12 @@ specific to this season has been published by the author, unlike Season 2's Game
    BIP39 English wordlist: the first word of the hidden page's name. Two facts established
    separately, one by brute-forcing `md5(N)` against the game pages and one by reading the
    hidden page's URL, land on the same word, which is a 1-in-2048 coincidence otherwise.
-   This is the strongest available reading of the author's "something in common" hint:
-   each game's page integer is the 1-based BIP39 index of that game's own answer word. It
-   costs me an earlier finding: I had read game 1's hangman as the 4-letter `frog`, and
-   `service` cannot fit a 4-letter pattern, so one of the two readings is wrong. The index
-   reading is the one with independent support, and `frog` is now a candidate I would drop
-   rather than defend.
+   The collision itself is solid; what it means is now narrower than it first looked. An
+   exhaustive ordering sweep (see below) shows these 12 words derive neither escrow in any
+   of their 479,001,600 orderings, so they are not this season's mnemonic under the standard
+   path. The reading that survives both facts is that the author built the hidden page's URL
+   by pushing each game's page integer through the wordlist: `service` first because game 1's
+   integer is 1570, without the words themselves being the answers.
 7. Under that reading the other 11 page integers are predicted exactly, and anyone with
    site access can falsify this in a minute: game 2 is 412, then 796, 117, 1744, 968, 76,
    552, 1388, 1377, 505, 1508 in the hidden page's word order. Every one is under 2200,
@@ -123,26 +124,21 @@ Full ledger in [analysis/tested.md](analysis/tested.md). Summary:
 | 13th hidden page search (N up to 2200, thematic words, N up to 36,000) | approximately 34,000 URLs | HTTP probe, 200/404 signature | refuted: no extra page beyond the Season 2 hint page | uncertified | 2026-07-26 |
 | Letter grids (games 4, 6, 9) as plain word searches | full BIP39 wordlist and a 75,145-word English dictionary, all 8 directions, length 4 or more | grid search | refuted as a classic word search: 2 incidental matches in game 4, 0 in games 6 and 9 | uncertified | 2026-07-26 |
 | Hidden links in the page markup | full site mirror | grep for anchors and `data-*` attributes | refuted: none found | yes | 2026-07-26 |
+| The hidden page's 12 words as this season's mnemonic, every ordering | 479,001,600 orderings, 29,933,635 checksum-valid | exhaustive sweep at `m/44'/60'/0'/0/0` and its parent, against all 19 ethereum/base addresses in this repository | 0 match in 311.7 minutes | yes: all 12 slice canaries recovered | 2026-08-17 |
 
 ## Open leads, ranked
 
-1. **Order the 12 words the hidden page already names** (hours of compute, no insight
-   needed). If that page is named by this season's answers, the word set is public and only
-   the order is missing: 12! is 479,001,600 orderings, 1 in 16 passes the BIP39 checksum,
-   so about 30 million derivations, which is a few hours on 4 cores. Confirmed by a match at
-   `m/44'/60'/0'/0/0`; killed by an exhaustive witnessed sweep, which would mean the page
-   name is not this season's answer set, or the wallet is not at the standard path.
-2. **Check the other 11 page integers against the prediction** (minutes, needs site access).
+1. **Check the other 11 page integers against the prediction** (minutes, needs site access).
    The reading in established fact 6 predicts every game's page name exactly: game 2 is
    `md5(412).html`, then 796, 117, 1744, 968, 76, 552, 1388, 1377, 505, 1508. One HTTP probe
    each. Two hits would settle the mechanic; one clean miss would kill it.
-3. **Identify the common mechanic across the 12 games** (hours). The leading reading,
+2. **Identify the common mechanic across the 12 games** (hours). The leading reading,
    from the author's own hint and the games built around dice, darts, and a board game,
    is that each game yields a number usable as a 1-to-2048 index into the BIP39 wordlist.
    Confirmed by a reading that correctly derives 2 or more of the already-established
    words from their games' own numbers; killed by a full 12-word attempt that fails under
    every indexing convention tried.
-2. **Solve the remaining games directly** (hours), since the word order is not a real
+3. **Solve the remaining games directly** (hours), since the word order is not a real
    lock once the set of 12 words is known. Confirmed by a full 12-word candidate matching
    the escrow; killed only by exhausting every game's plausible readings.
 

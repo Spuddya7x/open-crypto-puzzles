@@ -96,4 +96,25 @@ Measured rate: 2.49 million derivations per slice, 305 per second per core on th
 which matches the 956 per second the earlier oracle benchmark measured for bip_utils on
 faster hardware closely enough to be the same order.
 
-STATUS_PENDING
+Result, 2026-08-17: all 479,001,600 orderings enumerated, 29,933,635 of them checksum-valid
+and derived (6.25 percent, exactly the 1-in-16 the BIP39 design predicts), 311.7 minutes on
+4 cores. All 12 slice canaries were recovered, so the sweep is certified. **0 matches**: this
+12-word set derives none of the repository's Ethereum or Base addresses, at
+`m/44'/60'/0'/0/0` or its parent, in any ordering.
+
+That is a real negative on a real hypothesis, and it forces a choice between three readings:
+
+1. The page name is this season's answer set, but the wallet is not at the standard path or
+   carries a BIP39 passphrase. The URL order alone was already checked against 177 paths and
+   23 candidate passphrases with 0 hits, but the ordering sweep only covered 2 paths, so a
+   non-standard path plus a non-game order is still open.
+2. The page name is not the answer set at all, but the *image of the page integers* under the
+   wordlist. If the author built the hidden page's URL by mapping each game's `md5(N)`
+   integer through the BIP39 list, the name would look exactly like this and would contain
+   `service` first, because game 1's integer is 1570, without any of the 12 words being an
+   answer. This reading explains the collision and the negative at once, and it is the one I
+   would now bet on.
+3. The 1570-to-`service` collision is chance, at 1 in 2048. Least likely of the three.
+
+Readings 1 and 2 are told apart by the same cheap test either way: probe the 11 predicted
+page URLs. Under both, `md5(412).html` through `md5(1508).html` should exist.
