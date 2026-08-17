@@ -6,20 +6,27 @@ Season 2 hint page, which is how the full list was recovered: derive the URLs fr
 words, not the words from the URLs. Confirmed live 2026-08-17. Corner tags are quoted
 exactly as they appear on the page.
 
-| N | word naming the page | game | corner tags |
-|---|---|---|---|
-| 1570 | service | hangman | `dance` (left), `1st` (right) |
-| 412 | cricket | 5x5 grid of dice | `5:30` |
-| 796 | gloom | two rows of red/blue/yellow dots, second row prefixed `-` and underlined | none |
-| 117 | attend | 8x8 letter grid | `fall` |
-| 1744 | supreme | darts: `D12 T20 T17` | none |
-| 968 | jump | 15x15 letter grid | none |
-| 76 | annual | 9 playing cards in 2+5+2 rows | `where is` |
-| 552 | eager | 8 tic-tac-toe boards | `male` |
-| 1388 | pulp | 11x11 alphabet spiral with digits | `5:30` |
-| 1377 | project | the sentence `simplicity must be rewarded` | none |
-| 505 | disease | 4 lines of Pokemon names | none |
-| 1508 | round | a plus-shaped board of coloured dots (Ludo), 4 arms | none |
+The site's own game list confirms the numbering, and its footer states the order rule
+verbatim: "To get the correct order of the words, do a search at
+findtheprivatekeys4.vercel.app/(words in the order of the games without spaces).html". The
+bonus page follows that same convention, so the order its words appear in *is* the game
+order, which independently matches every game number already recorded in this folder
+(1 hangman, 4 the 8x8 with `fall`, 6 the 15x15, 9 the spiral with `5:30`, 12 the Ludo board).
+
+| game | N | word naming the page | content | corner tags |
+|---|---|---|---|---|
+| 1 | 1570 | service | hangman | `dance` (left), `1st` (right) |
+| 2 | 412 | cricket | 5x5 grid of dice | `5:30` |
+| 3 | 796 | gloom | two rows of red/blue/yellow dots, second prefixed `-` and underlined | none |
+| 4 | 117 | attend | 8x8 letter grid | `fall` |
+| 5 | 1744 | supreme | darts: `D12 T20 T17` | none |
+| 6 | 968 | jump | 15x15 letter grid | none |
+| 7 | 76 | annual | 9 playing cards in 2+5+2 rows | `where is` |
+| 8 | 552 | eager | 8 tic-tac-toe boards | `male` |
+| 9 | 1388 | pulp | 11x11 alphabet spiral with digits | `5:30` |
+| 10 | 1377 | project | the sentence `simplicity must be rewarded` | none |
+| 11 | 505 | disease | 4 lines of Pokemon names | none |
+| 12 | 1508 | round | a plus-shaped Ludo board of coloured dots | none |
 
 ## Hangman (1570)
 
